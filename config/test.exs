@@ -1,0 +1,11 @@
+import Config
+
+config :ash_timestamptz_error, AshTimestamptzError.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "ash_timestamptz_error_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+
+config :ash, policies: [show_policy_breakdowns?: true], disable_async?: true
