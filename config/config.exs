@@ -1,6 +1,8 @@
 import Config
 
-config :ash_timestamptz_error, ecto_repos: [AshTimestamptzError.Repo]
+config :ash_timestamptz_error,
+  ecto_repos: [AshTimestamptzError.Repo],
+  ash_domains: [AshTimestamptzError.Foos]
 
 config :ash,
   allow_forbidden_field_for_relationships_by_default?: true,
@@ -12,7 +14,8 @@ config :ash,
   default_actions_require_atomic?: true,
   read_action_after_action_hooks_in_order?: true,
   bulk_actions_default_to_errors?: true,
-  transaction_rollback_on_error?: true
+  transaction_rollback_on_error?: true,
+  known_types: [AshPostgres.Timestamptz, AshPostgres.TimestamptzUsec]
 
 config :spark,
   formatter: [

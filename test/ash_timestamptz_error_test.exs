@@ -2,7 +2,12 @@ defmodule AshTimestamptzErrorTest do
   use ExUnit.Case
   doctest AshTimestamptzError
 
-  test "greets the world" do
-    assert AshTimestamptzError.hello() == :world
+  alias AshTimestamptzError.Foos.Foo
+
+  test "recently created foo should have true `past_bar?`" do
+    foo =
+      Ash.create!(Foo, %{bar: DateTime.utc_now()})
+
+    assert Ash.get!(Foo, foo.id, load: :past_bar?).past_bar?
   end
 end

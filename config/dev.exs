@@ -1,9 +1,6 @@
 import Config
 
 config :ash_timestamptz_error, AshTimestamptzError.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
   database: "ash_timestamptz_error_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
