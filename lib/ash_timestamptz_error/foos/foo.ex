@@ -17,10 +17,11 @@ defmodule AshTimestamptzError.Foos.Foo do
   attributes do
     integer_primary_key :id
 
-    attribute :bar, AshPostgres.Timestamptz, allow_nil?: false
+    attribute :bar, AshPostgres.TimestamptzUsec, allow_nil?: false
   end
 
   calculations do
     calculate :past_bar?, :boolean, expr(bar <= now())
+    calculate :past_bar2?, :boolean, expr(now() > bar)
   end
 end
